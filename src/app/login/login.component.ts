@@ -12,11 +12,14 @@ export class LoginComponent implements OnInit {
   username;
   password;
   login(username, password) {
-    console.log([username, password]);
     this.service
       .login(username, password)
-      .then(() => {
-        this.router.navigate(['profile']);
+      .then((res) => {
+        if (res.status === 404) {
+          alert('Invalid username or password');
+        } else {
+          this.router.navigate(['profile']);
+        }
       });
   }
 

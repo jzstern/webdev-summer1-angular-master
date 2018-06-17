@@ -7,7 +7,7 @@ export class SectionServiceClient {
     return fetch(url, {
       credentials: 'include'
     })
-      .then(response => response.json());
+      .then((response) => response.json());
   }
 
   enrollStudentInSection(sectionId) {

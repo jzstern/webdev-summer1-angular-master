@@ -11,8 +11,8 @@
   </button>
 
   <ul class="list-group">
-    <li *ngFor="let section of sections" class="list-group-item">
-      {{section.name}} {{section.seats}}
+    <li *ngFor="let section of sections" class="list-group-item row">
+      Name: {{section.name}}    Seats: {{section.seats}}
       <button (click)="enroll(section)"
               class="float-right btn btn-primary">Enroll</button>
     </li>

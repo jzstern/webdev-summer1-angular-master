@@ -16,12 +16,20 @@ export class ProfileComponent implements OnInit {
               private router: Router) { }
 
   user = {};
-  username;
-  password;
+  // userId;
+  // username;
+  // firstName;
+  // lastName;
+  // password;
+  // email;
   sections = [];
 
   update(user) {
     console.log(user);
+    this.service
+      .updateUser(user)
+      .then(() =>
+        alert("User updated successfully"));
   }
 
   logout() {
@@ -35,8 +43,16 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.service
       .profile()
-      .then(user =>
-        this.username = user.username);
+      .then(user => {
+        this.user = user;
+        console.log(this.user);
+      })
+      //     this.userId = user._id;
+      //     this.username = user.username;
+      //     this.firstName = user.firstName;
+      //     this.lastName = user.lastName;
+      //     this.email = user.email;
+      // })
 
     this.sectionService
       .findSectionsForStudent()

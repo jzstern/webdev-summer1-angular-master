@@ -1,19 +1,19 @@
 <div class="container-fluid">
   <h1>Profile</h1>
 
-  <input [(ngModel)]="username"
-         placeholder="username"
+  <input [(ngModel)]="user.username"
+         placeholder="Username"
          class="form-control"/>
-  <input [(ngModel)]="firstName"
-         placeholder="first name"
+  <input [(ngModel)]="user.firstName"
+         placeholder="First name"
          class="form-control"/>
-  <input [(ngModel)]="lastName"
-         placeholder="lastName"
+  <input [(ngModel)]="user.lastName"
+         placeholder="Last name"
          class="form-control"/>
-  <input [(ngModel)]="email"
-         placeholder="email"
+  <input [(ngModel)]="user.email"
+         placeholder="Email"
          class="form-control"/>
-  <button (click)="update()"
+  <button (click)="update(user)"
           class="btn btn-primary btn-block">
     Update
   </button>
@@ -27,7 +27,7 @@
     </li>
   </ul>
 
-  <a (click)="logout()">Logout</a>
-  <a routerLink="/home">Home</a>
+  <button (click)="logout()" class="btn btn-secondary">Logout</button>
+  <button routerLink="/home" class="btn btn-info">Home</button>
 
 </div>
