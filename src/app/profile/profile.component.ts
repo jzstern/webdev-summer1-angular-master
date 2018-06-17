@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
 
   user = {};
   sections = [];
+  isAdmin = false;
 
   update(user) {
     console.log(user);
@@ -39,6 +40,10 @@ export class ProfileComponent implements OnInit {
       .profile()
       .then(user => {
         this.user = user;
+        if (user.username === 'admin') {
+          this.isAdmin = true;
+          console.log(this.isAdmin);
+        }
       })
 
     this.sectionService

@@ -17,9 +17,12 @@
          placeholder="Address"
          class="form-control"/>
   <button (click)="update(user)"
-          class="btn btn-primary btn-block">
+          class="btn btn-primary btn-block"
+          style="margin-bottom: 10px">
     Update
   </button>
+
+  <button [hidden]="!isAdmin" class="btn btn-warning" style="margin-bottom: 10px">Admin</button>
 
   <h2>Sections ({{sections.length}})</h2>
 

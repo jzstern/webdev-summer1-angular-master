@@ -19,6 +19,7 @@ export class SectionListComponent implements OnInit {
   seats = '';
   courseId = '';
   sections = [];
+  isAdmin = false;
 
   loadSections(courseId) {
     this.courseId = courseId;
@@ -38,9 +39,19 @@ export class SectionListComponent implements OnInit {
   }
 
   enroll(section) {
-    // alert(section._id);
-    this.service
-      .enrollStudentInSection(section._id)
+    if (section.seats > 0) {
+      this.service
+        .enrollStudentInSection(section._id)
+        .then(() => {
+          this.router.navigate(['profile']);
+        });
+    } else {
+      alert('Sorry, there are no more seats available in this section');
+    }
+  }
+
+  unEnroll(section) {
+    this.service.unenrollStudentInSection(section._id)
       .then(() => {
         this.router.navigate(['profile']);
       });

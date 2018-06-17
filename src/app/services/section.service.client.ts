@@ -13,7 +13,23 @@ export class SectionServiceClient {
   enrollStudentInSection(sectionId) {
     const url = 'http://localhost:4000/api/section/' + sectionId + '/enrollment';
     return fetch(url, {
-      method: 'post',
+      method: 'POST',
+      credentials: 'include'
+    });
+  }
+      // .then((response) => {
+      //   if (response.status === 404) {
+      //     alert('Sorry, there are no more seats left in this section');
+      //   } else {
+      //   }
+      // }
+      // );
+
+  unenrollStudentInSection(sectionId) {
+    // /api/student/:sid/section/:kid
+    const url = 'http://localhost:4000/api/section/' + sectionId + '/enrollment';
+    return fetch(url, {
+      method: 'DELETE',
       credentials: 'include'
     });
   }
@@ -26,7 +42,7 @@ export class SectionServiceClient {
   createSection(courseId, name, seats) {
     const section = {courseId, name, seats};
     return fetch(this.SECTION_URL.replace('COURSEID', courseId), {
-      method: 'post',
+      method: 'POST',
       body: JSON.stringify(section),
       credentials: 'include',
       headers: {
