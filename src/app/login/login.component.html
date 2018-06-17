@@ -9,10 +9,11 @@
          type="password"
          class="form-control"/>
   <button (click)="login(username, password)"
-          class="btn btn-primary btn-block">
+          class="btn btn-primary btn-block"
+          style="margin-bottom: 10px">
     Login
   </button>
 
-  <a routerLink="/register">Register</a>
-  <a routerLink="/home">Home</a>
+  <button routerLink="/register" class="btn btn-secondary">Register</button>
+  <button routerLink="/home" class="btn btn-info">Home</button>
 </div>
