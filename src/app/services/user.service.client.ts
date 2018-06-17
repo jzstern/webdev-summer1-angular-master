@@ -50,7 +50,6 @@ export class UserServiceClient {
   }
 
   updateUser(user) {
-
     return fetch ('http://localhost:4000/api/user/' + user._id, {
       body: JSON.stringify(user),
       credentials: 'include', // include, same-origin, *omit
@@ -59,5 +58,19 @@ export class UserServiceClient {
         'content-type': 'application/json'
       }
     });
+  }
+
+  checkUser() {
+    if (fetch ('http://localhost:4000/api/login/profile', {
+        credentials: 'include', // include, same-origin, *omit
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json'
+        }
+      })) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

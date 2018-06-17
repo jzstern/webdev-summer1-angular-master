@@ -16,12 +16,6 @@ export class ProfileComponent implements OnInit {
               private router: Router) { }
 
   user = {};
-  // userId;
-  // username;
-  // firstName;
-  // lastName;
-  // password;
-  // email;
   sections = [];
 
   update(user) {
@@ -45,18 +39,11 @@ export class ProfileComponent implements OnInit {
       .profile()
       .then(user => {
         this.user = user;
-        console.log(this.user);
       })
-      //     this.userId = user._id;
-      //     this.username = user.username;
-      //     this.firstName = user.firstName;
-      //     this.lastName = user.lastName;
-      //     this.email = user.email;
-      // })
 
     this.sectionService
       .findSectionsForStudent()
-      .then(sections => this.sections = sections );
+      .then(sections => this.sections = sections);
   }
 
 }
