@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../models/user.model.client";
-import {UserServiceClient} from "../services/user.service.client";
 import {Router} from "@angular/router";
+import {UserServiceClient} from "../services/user.service.client";
 import {SectionServiceClient} from "../services/section.service.client";
 
 @Component({
@@ -18,7 +17,6 @@ export class ProfileComponent implements OnInit {
   user = {};
   sections = [];
   isAdmin = false;
-  isLoggedIn = true;
 
   ngOnInit() {
     this.service
@@ -42,7 +40,6 @@ export class ProfileComponent implements OnInit {
   }
 
   update(user) {
-    console.log(user);
     this.service
       .updateUser(user)
       .then(() =>

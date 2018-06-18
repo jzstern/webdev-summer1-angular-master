@@ -1,3 +1,45 @@
-<p>
-  admin works!
-</p>
+<div class="container">
+  <h1>Admin</h1>
+
+  <h2>Course Grid ({{courses.length}})</h2>
+
+  <div class="row">
+    <div *ngFor="let course of courses" class="col-sm-3">
+      <div (click)="getSectionsForCourse(course.id)" class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{course.title}}</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div [hidden]="currentCourseId == 0" style="margin-top: 15px">
+    <h3>Sections for this course: {{currentCourseId}}</h3>
+
+    <ul class="list-group">
+      <li *ngFor="let section of sections" class="list-group-item flex-row">
+        {{section.name}}    Seats: {{section.seats}}
+        <button (click)="enroll(section)" class="float-right btn btn-primary">Enroll</button>
+      </li>
+    </ul>
+
+    <h5 style="margin-top: 10px">Section name</h5>
+    <input [(ngModel)]="section.name"
+           placeholder="e.g. CS4550 Section 1"
+           class="form-control">
+    <h5 style="margin-top: 10px">Number of seats</h5>
+    <input [(ngModel)]="section.seats"
+           placeholder="Seats available"
+           class="form-control">
+    <button (click)="createSection()" class="btn btn-success btn-block" style="margin-top: 10px">
+      Add Section
+    </button>
+  </div>
+
+  <div style="margin-top: 10px">
+    <button (click)="logout()" class="btn btn-secondary">Logout</button>
+    <button routerLink="/profile" class="btn btn-primary">Profile</button>
+    <button routerLink="/home" class="btn btn-info">Home</button>
+  </div>
+</div>
