@@ -18,9 +18,16 @@
     <h3>Sections for this course: {{currentCourseId}}</h3>
 
     <ul class="list-group">
-      <li *ngFor="let section of sections" class="list-group-item flex-row">
+      <li *ngFor="let section of sections" class="list-group-item row">
+        <input [(ngModel)]="section.name"
+               placeholder="Section Name"
+               class="form">
+        <input [(ngModel)]="section.seats"
+               placeholder="Number of seats"
+               class="form">
         {{section.name}}    Seats: {{section.seats}}
-        <button (click)="enroll(section)" class="float-right btn btn-primary">Enroll</button>
+        <button (click)="updateSection(section)" class="float-right btn btn-primary">Update</button>
+        <button (click)="deleteSection(section._id)" class="float-right btn btn-danger" style="margin-right: 10px">Delete</button>
       </li>
     </ul>
 

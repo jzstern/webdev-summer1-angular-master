@@ -43,6 +43,19 @@ export class AdminComponent implements OnInit {
         alert("Section updated successfully"));
   }
 
+  deleteSection(sectionId) {
+    this.sectionService
+      .deleteSection(sectionId)
+      .then(() => {
+        this.sectionService
+          .findSectionsForCourse(this.currentCourseId)
+          .then(sections => {
+            this.sections = sections;
+            this.section.name = this.currentCourseName + ' Section ' + (sections.length + 1);
+          });
+      });
+  }
+
   getSectionsForCourse(courseId) {
     this.currentCourseId = courseId;
 

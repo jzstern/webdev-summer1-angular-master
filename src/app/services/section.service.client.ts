@@ -51,7 +51,7 @@ export class SectionServiceClient {
   }
 
   updateSection(section) {
-    return fetch (this.SECTION_URL + '/' + section._id, {
+    return fetch ('http://localhost:4000/api/section/' + section._id, {
       body: JSON.stringify(section),
       credentials: 'include', // include, same-origin, *omit
       method: 'PUT',
@@ -62,7 +62,7 @@ export class SectionServiceClient {
   }
 
   deleteSection(sectionId) {
-    return fetch(this.SECTION_URL + '/' + sectionId, {
+    return fetch('http://localhost:4000/api/section/' + sectionId, {
       credentials: 'include', // include, same-origin, *omit
       method: 'DELETE',
       headers: {
