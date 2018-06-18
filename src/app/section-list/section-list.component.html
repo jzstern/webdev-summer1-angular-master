@@ -17,7 +17,6 @@
     <li *ngFor="let section of sections" class="list-group-item flex-row">
       {{section.name}}    Seats: {{section.seats}}
       <button (click)="enroll(section)" class="float-right btn btn-primary">Enroll</button>
-      <button (click)="unenroll(section)" class="float-right btn btn-warning" style="margin-right: 10px">Un-enroll</button>
     </li>
   </ul>
 

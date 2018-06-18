@@ -21,6 +21,9 @@ export class SectionListComponent implements OnInit {
   sections = [];
   isAdmin = false;
 
+  ngOnInit() {
+  }
+
   loadSections(courseId) {
     this.courseId = courseId;
     this
@@ -49,15 +52,4 @@ export class SectionListComponent implements OnInit {
       alert('Sorry, there are no more seats available in this section');
     }
   }
-
-  unEnroll(section) {
-    this.service.unenrollStudentInSection(section._id)
-      .then(() => {
-        this.router.navigate(['profile']);
-      });
-  }
-
-  ngOnInit() {
-  }
-
 }

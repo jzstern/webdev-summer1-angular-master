@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <h1>Profile</h1>
 
   <input [(ngModel)]="user.username"
@@ -22,14 +22,16 @@
     Update
   </button>
 
-  <button [hidden]="!isAdmin" class="btn btn-warning" style="margin-bottom: 10px">Admin</button>
+  <button routerLink="/admin" [hidden]="!isAdmin" class="btn btn-warning" style="margin-bottom: 10px">Admin</button>
 
   <h2>Sections ({{sections.length}})</h2>
 
-  <ul class="list-group">
+  <ul class="list-group" style="margin-bottom: 10px">
     <li *ngFor="let enrollment of sections" class="list-group-item">
       {{enrollment.section.name}}
       ({{enrollment.section.seats}})
+      Grade: A
+      <button (click)="unenroll(enrollment)" class="float-right btn btn-warning" style="margin-right: 10px">Un-enroll</button>
     </li>
   </ul>
 
