@@ -1,6 +1,8 @@
 export class SectionServiceClient {
 
-  SECTION_URL = 'http://localhost:4000/api/course/COURSEID/section';
+  // SECTION_URL = 'http://localhost:4000/api/course/COURSEID/section';
+  SECTION_URL = 'http://stern-webdev-angular.herokuapp.com/api/course/COURSEID/section';
+  HEROKU_URL = 'https://stern-webdev-angular.herokuapp.com/api/';
 
   findSectionsForStudent() {
     const url = 'http://localhost:4000/api/student/section';
@@ -11,7 +13,7 @@ export class SectionServiceClient {
   }
 
   enrollStudentInSection(sectionId) {
-    const url = 'http://localhost:4000/api/section/' + sectionId + '/enrollment';
+    const url = this.HEROKU_URL + 'section/' + sectionId + '/enrollment';
     return fetch(url, {
       method: 'POST',
       credentials: 'include',
@@ -23,7 +25,7 @@ export class SectionServiceClient {
 
   unenrollStudentInSection(enrollment) {
     // /api/student/:sid/section/:kid
-    const url = 'http://localhost:4000/api/section/' + enrollment.section._id + '/enrollment/' + enrollment._id;
+    const url = this.HEROKU_URL + 'section/' + enrollment.section._id + '/enrollment/' + enrollment._id;
     return fetch(url, {
       method: 'DELETE',
       credentials: 'include',
@@ -51,7 +53,7 @@ export class SectionServiceClient {
   }
 
   updateSection(section) {
-    return fetch ('http://localhost:4000/api/section/' + section._id, {
+    return fetch (this.HEROKU_URL + 'section/' + section._id, {
       body: JSON.stringify(section),
       credentials: 'include', // include, same-origin, *omit
       method: 'PUT',
@@ -62,7 +64,7 @@ export class SectionServiceClient {
   }
 
   deleteSection(sectionId) {
-    return fetch('http://localhost:4000/api/section/' + sectionId, {
+    return fetch(this.HEROKU_URL + 'section/' + sectionId, {
       credentials: 'include', // include, same-origin, *omit
       method: 'DELETE',
       headers: {

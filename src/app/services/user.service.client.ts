@@ -1,6 +1,7 @@
 export class UserServiceClient {
+  HEROKU_URL = 'https://stern-webdev-angular.herokuapp.com/api/';
   findUserById(userId) {
-    return fetch('http://localhost:4000/api/user/' + userId)
+    return fetch(this.HEROKU_URL + '/user/' + userId)
       .then(response => response.json());
   }
 
@@ -9,7 +10,7 @@ export class UserServiceClient {
       username: username,
       password: password
     };
-    return fetch('http://localhost:4000/api/login', {
+    return fetch(this.HEROKU_URL + 'login', {
       method: 'POST',
       body: JSON.stringify(credentials),
       credentials: 'include',
@@ -20,14 +21,14 @@ export class UserServiceClient {
   }
 
   logout() {
-    return fetch('http://localhost:4000/api/logout', {
+    return fetch(this.HEROKU_URL + 'logout', {
       method: 'POST',
       credentials: 'include'
     });
   }
 
   profile() {
-    return fetch('http://localhost:4000/api/profile',
+    return fetch(this.HEROKU_URL + 'profile',
       {
         credentials: 'include', // include, same-origin, *omit
       })
@@ -39,7 +40,7 @@ export class UserServiceClient {
       username: username,
       password: password
     };
-    return fetch('http://localhost:4000/api/user', {
+    return fetch(this.HEROKU_URL + 'user', {
       body: JSON.stringify(user),
       credentials: 'include', // include, same-origin, *omit
       method: 'POST',
@@ -50,7 +51,7 @@ export class UserServiceClient {
   }
 
   updateUser(user) {
-    return fetch ('http://localhost:4000/api/user/' + user._id, {
+    return fetch (this.HEROKU_URL + 'user/' + user._id, {
       body: JSON.stringify(user),
       credentials: 'include', // include, same-origin, *omit
       method: 'PUT',
@@ -61,7 +62,7 @@ export class UserServiceClient {
   }
 
   checkUser() {
-    if (fetch ('http://localhost:4000/api/login/profile', {
+    if (fetch (this.HEROKU_URL + 'login/profile', {
         credentials: 'include', // include, same-origin, *omit
         method: 'GET',
         headers: {
